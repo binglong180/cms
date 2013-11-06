@@ -5,10 +5,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>广州精诚所至贸易有限公司  后台管理系统</title>
+<title>广州竭诚所至贸易有限公司  后台管理系统</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Bootstrap -->
 <link href="${ctx}/resources/css/bootstrap/bootstrap.min.css" rel="stylesheet" media="screen"/>
+<script src="${ctx }/resources/js/plugins/alertbox/alertBox.js" type="text/javascript"></script>
 <style>
 body {
 	padding-top: 60px;
@@ -27,7 +28,11 @@ body {
 		$(".cms-left").click(function() {
 			var targetUrl = $(this).attr("lang");
 			var id = $(this).attr("id");
+			
+			var loadingBox = newAlertBox("loadingBox");
+			loadingBox.show();
 			$("#right").load(targetUrl, function() {
+				loadingBox.close();
 				$(".nav-pills > .active").attr("class", "");
 				$("li[lang='"+ id +"']").attr("class", "active");
 			});
@@ -38,7 +43,11 @@ body {
 		$(".cms-nav").click(function() {
 			var url = $(this).attr("lang");
 			var id = $(this).attr("id");
+			var loadingBox = newAlertBox("loadingBox");
+			loadingBox.show();
+			$("#loadingBox").css("z-index", 20000);
 			$("#cms-content").load(url, function() {
+				loadingBox.close();
 				$("#cms-nav-ul > .active").attr("class", "");
 				$("li[lang='" + id + "']").attr("class", "active");
 			});
@@ -59,7 +68,7 @@ body {
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-				<a class="brand" href="${ctx }/home.do">广州精诚所至贸易有限公司</a>
+				<a class="brand" href="${ctx }/home.do">广州竭诚所至贸易有限公司</a>
 				<div class="nav-collapse">
 					<ul class="nav" id="cms-nav-ul">
 						<li class="active"><a href="${ctx }/admin/index.do" >系统信息</a></li>
@@ -100,6 +109,6 @@ body {
 	<center>
 	Copyright © 2013&nbsp;&nbsp;power by <a href="http://www.linxiaosheng.com/" target="_blank">Linxs</a>
 	</center>
-	
+	<%@ include file="/WEB-INF/common/loading.jsp"%>
 </body>
 </html>

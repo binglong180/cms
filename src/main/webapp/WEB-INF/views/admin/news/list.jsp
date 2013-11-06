@@ -11,12 +11,26 @@
 <script type="text/javascript">
 	$(function() {
 		$("#cms-news-create").click(function() {
-			$("#right").load("${ctx}/admin/news-create.do");
+		
+			var loadingBox = newAlertBox("loadingBox");
+			loadingBox.show();
+			$("#loadingBox").css("z-index", 20000);
+		
+			$("#right").load("${ctx}/admin/news-create.do", function() {
+				loadingBox.close();
+			});
 		});
 		
 		$(".cms-news-edit").click(function() {
 			var id = $(this).attr("lang");
-			$("#right").load("${ctx}/admin/news-edit.do?id=" + id);
+			
+			var loadingBox = newAlertBox("loadingBox");
+			loadingBox.show();
+			$("#loadingBox").css("z-index", 20000);
+			
+			$("#right").load("${ctx}/admin/news-edit.do?id=" + id, function() {
+				loadingBox.close();
+			});
 		});
 		
 		$(".cms-news-remove").click(function() {
@@ -28,6 +42,11 @@
 		$("#cms-news-ensure-delete").click(function() {
 			$('#cms-news-remove-modal').modal('hide');
 			var id = $("#cms-temp-value").val();
+			
+			var loadingBox = newAlertBox("loadingBox");
+			loadingBox.show();
+			$("#loadingBox").css("z-index", 20000);
+			
 			$.ajax({
 				url : "${ctx}/admin/news-remove.do",
 				data : {
@@ -35,6 +54,7 @@
 				},
 				type : "post",
 				success : function(data) {
+					loadingBox.close();
 					if("success" === data) {
 						var id = $("#cms-temp-value").val();
 						$("#cms-news-row-" + id).hide("slow");

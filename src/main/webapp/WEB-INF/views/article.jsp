@@ -1,13 +1,14 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
 <%@include file="/commons/taglibs.jsp" %>
 <%@include file="/commons/no-cache.jsp" %>
-<%@include file="/commons/common-header.jsp" %>
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8" %>
-<html>
-<head>
-	<title>Home</title>
-	<link rel="stylesheet" href="${ctx}/resources/css/linxs.css">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>竭诚所至贸易有限公司</title>
+<link href="${ctx }/resources/css/fore.css" rel="stylesheet" type="text/css"/> 
+<script src="${ctx }/resources/js/jquery.js" type="text/javascript"></script>
 </head>
 <body class="view-post">
 

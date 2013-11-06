@@ -10,7 +10,12 @@
 			
 			$(document).off('click', ".cms-add-attribute", addAttribute);
 			
+			var loadingBox = newAlertBox("loadingBox");
+			loadingBox.show();
+			$("#loadingBox").css("z-index", 20000);
+			
 			$("#right").load(targetUrl, function() {
+				loadingBox.close();
 				$(".nav-pills > .active").attr("class", "");
 				$("li[lang='"+ id +"']").attr("class", "active");
 			});

@@ -15,6 +15,11 @@
 		});
 		
 		$("#cms-channel-top").click(function() {
+			
+			var loadingBox = newAlertBox("loadingBox");
+			loadingBox.show();
+			$("#loadingBox").css("z-index", 20000);
+					
 			var id = $(this).val();
 			if(id === "") {
 				return false;
@@ -27,7 +32,7 @@
 				dataType : "json",
 				type : "get",
 				success : function(data) {
-					
+					loadingBox.close();
 					if(data.length > 0) {
 						var html = "";
 						$.each(data, function(index, item) {
@@ -51,17 +56,32 @@
 		});
 		
 		$("#cms-commodity-publish").click(function() {
+			
 			var id = $("#cms-publish-channel-id").val();
 			
 			if(id !== "") {
 				$('#cms-publish-modal').modal('hide');
-				$("#right").load("${ctx}/admin/commodity-publish.do?id=" + id);
+				
+				var loadingBox = newAlertBox("loadingBox");
+				loadingBox.show();
+				$("#loadingBox").css("z-index", 20000);
+				
+				$("#right").load("${ctx}/admin/commodity-publish.do?id=" + id, function() {
+					loadingBox.close();
+				});
 			}
 		});
 		
 		$(".cms-commodity-update").click(function() {
+			
+			var loadingBox = newAlertBox("loadingBox");
+			loadingBox.show();
+			$("#loadingBox").css("z-index", 20000);
+		
 			var id = $(this).attr("lang");
-			$("#right").load("${ctx}/admin/commodity-update.do?id=" + id);
+			$("#right").load("${ctx}/admin/commodity-update.do?id=" + id, function() {
+				loadingBox.close();
+			});
 		});
 		
 		$(".cms-commodity-remove").click(function() {
@@ -73,12 +93,18 @@
 		$("#cms-commodity-ensure-delete").click(function() {
 			$('#cms-commodity-remove-modal').modal('hide');
 			var id = $("#cms-commodity-delete-id").val();
+			
+			var loadingBox = newAlertBox("loadingBox");
+			loadingBox.show();
+			$("#loadingBox").css("z-index", 20000);
+			
 			$.ajax({
 				url : "${ctx}/admin/commodity-remove.do",
 				type : "post",
 				dataType : "html",
 				data : {"id" : id},
 				success : function(data) {
+					loadingBox.close();
 					if("success" === data) {
 						$("#cms-channel-row-" + id).hide("slow");
 					}
@@ -88,7 +114,14 @@
 		
 		$(".cms-page-forward").click(function() {
 			var href = $(this).attr("lang");
-			$("#right").load(href);
+			
+			var loadingBox = newAlertBox("loadingBox");
+			loadingBox.show();
+			$("#loadingBox").css("z-index", 20000);
+			
+			$("#right").load(href, function() {
+				loadingBox.close();
+			});
 		});
 		
 	});

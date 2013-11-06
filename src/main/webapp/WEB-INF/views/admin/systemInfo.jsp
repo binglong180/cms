@@ -15,7 +15,7 @@
 </head>
 <body>
 	<div class="hero-unit">
-		<legend>广州精诚所至贸易有限公司企业网站后台管理系统</legend>
+		<legend>广州竭诚所至贸易有限公司企业网站后台管理系统</legend>
 		<p>当前系统时间：<span id="current" class="badge"></span></p>
 		<li>服务器系统：${props['os.name'] }</li>
 		<li>服务器系统版本：${props['os.version'] }</li>

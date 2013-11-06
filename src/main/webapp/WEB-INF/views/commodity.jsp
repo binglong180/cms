@@ -1,16 +1,14 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
-<%@include file="/commons/taglibs.jsp" %>
-<%@include file="/commons/no-cache.jsp" %>
-<%@include file="/commons/common-header.jsp" %>
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8" %>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@include file="/commons/taglibs.jsp" %>
+<%@include file="/commons/no-cache.jsp" %>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>竭诚所至贸易有限公司</title>
 <link href="${ctx }/resources/css/fore.css" rel="stylesheet" type="text/css"/> 
-
+<script src="${ctx }/resources/js/jquery.js" type="text/javascript"></script>
 <style type="text/css">
 
 html{
@@ -39,7 +37,7 @@ h1 {height:50px; line-height:50px; font-size:22px; font-weight:normal; font-fami
 #focus ul li div {position:absolute; overflow:hidden;}
 #focus .btnBg {position:absolute; width:520px; height:20px; left:0; bottom:0; background:#000;}
 #focus .btn {position:absolute; width:520px; height:10px; padding:5px 10px; right:0; bottom:0; text-align:right;}
-#focus .btn span {display:inline-block; _display:inline; _zoom:1; width:25px; height:10px; _font-size:0; margin-left:5px; cursor:pointer; background:#9ACD32;}
+#focus .btn span {display:inline-block; _display:inline; _zoom:1; width:25px; height:10px; _font-size:0; margin-left:5px; cursor:pointer; background:#007AC7;}
 #focus .btn span.on {background:#fff;}
 #focus .preNext {width:45px; height:100px; position:absolute; top:150px; background:url(${ctx}/resources/images/fore/sprite.png) no-repeat 0 0; cursor:pointer;}
 #focus .pre {left:0;}
@@ -148,13 +146,6 @@ h1 {height:50px; line-height:50px; font-size:22px; font-weight:normal; font-fami
         	}
         });
     </script> 
-    <!-- Baidu Button BEGIN -->
-<script type="text/javascript" id="bdshare_js" data="type=slide&amp;img=1&amp;pos=right&amp;uid=0" ></script>
-<script type="text/javascript" id="bdshell_js"></script>
-<script type="text/javascript">
-document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000);
-</script>
-<!-- Baidu Button END -->
 </body>
 </html>
 
