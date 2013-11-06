@@ -45,7 +45,7 @@ body {
 						$('#cms-delete-modal').modal('hide');
 						$("#cms-channel-row-".concat(id)).hide("slow");
 					} 
-				}
+				} 
 			});
 		});
 		
