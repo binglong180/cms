@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>AlertBox 弹出层（信息提示框）效果</title>
+
+<link href="E:/private/workspace/Bosoar/WebRoot/resources/css/shop/index.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="E:/private/workspace/Bosoar/WebRoot/resources/js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="/resources/js/shop/shop.js"></script>
+
+<script src="alertBox.js"></script>
+<script type="text/javascript">
+	$( function() {
+		$.suoruan().buy();
+	});
+</script>
+<style>
+.lightbox{width:300px;background:#FFFFFF;border:5px solid #ccc;line-height:20px;display:none; margin:0;}
+.lightbox dt{background:#f4f4f4;padding:5px;}
+.lightbox dd{ padding:20px; margin:0;}
+.lightbox span{position:absolute;right:5px;top:2px}
+</style>
+</head>
+<body >
+
+<label>
+	<a href="javascript:void(0);" id="idBoxOpen">open</a>
+	<span id="idMsg"></span> <br />
+	<dl id="idBox" class="lightbox" style="top:10%;left:5%;">
+		<dt><b>hello</b><a href="javascript:void(0);" id="idBoxClose"><span><img src="delete1.gif"/></span></a></dt>
+		<dd><br/>
+			<input type="text" value="正常输入" id="idBoxTxt">
+	
+			
+		</dd>
+	</dl>
+</label>
+<script>
+(function(){
+	
+	var ab = new AlertBox("idBox");
+	ab.center = true;
+	//锁定键盘
+	function lockup(e){ e.preventDefault(); }
+	//高亮层不锁定
+	function lockout(e){ e.stopPropagation(); }
+	
+	ab.onShow = function(){
+		$$E.addEvent( document, "keydown", lockup );
+		$$E.addEvent( this.box, "keydown", lockout );
+		$$("idBoxTxt").select();
+		OverLay.show();
+	}
+	ab.onClose = function(){
+		$$("idMsg").innerHTML = $$("idBoxTxt").value;
+		$$E.removeEvent( document, "keydown", lockup );
+		$$E.removeEvent( this.box, "keydown", lockout );
+		OverLay.close();
+	}
+	
+	$$("idBoxClose").onclick = function(){ ab.close(); }
+	$$("idBoxOpen").onclick = function(){ ab.show(); }
+	
+
+})()
+</script>
+</body>
+</html>
