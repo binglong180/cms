@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=8">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+	<title>UEditor定制化</title>
+	<script type="text/javascript" src="jquery.js"/>
+	
+	<script type="text/javascript" src="editor_config.js"></script>
+	<script type="text/javascript" src="editor.js"></script>
+	<link rel="stylesheet" href="themes/default/ueditor.css" />
+</head>
+<body>
+
+<script type="text/plain" id="editor" style="display: none;"></script>
+</body>
+<script type="text/javascript">
+    var editor = new UE.ui.Editor();
+    editor.render('editor');
+</script>
+	<div class="edui-editor-toolbarboxinner edui-default">
+		<div id="edui2" class="edui-toolbar   edui-default" onselectstart="return false;" onmousedown="return $EDITORUI[&quot;edui2&quot;]._onMouseDown(event, this);"
+			style="-webkit-user-select: none;">
+			<div id="edui9" class="edui-box edui-button edui-for-insertimage edui-default">
+				<div id="edui9_state" onmousedown="$EDITORUI[&quot;edui9&quot;].Stateful_onMouseDown(event, this);"
+					onmouseup="$EDITORUI[&quot;edui9&quot;].Stateful_onMouseUp(event, this);" onmouseover="$EDITORUI[&quot;edui9&quot;].Stateful_onMouseOver(event, this);"
+					onmouseout="$EDITORUI[&quot;edui9&quot;].Stateful_onMouseOut(event, this);" class="edui-default">
+					<div class="edui-button-wrap edui-default">
+						<div id="edui9_body" unselectable="on" title="图片" class="edui-button-body edui-default" onmousedown="return false;"
+							onclick="return $EDITORUI[&quot;edui9&quot;]._onClick();"><a href="javascript:void(0);">上传图片</a>
+							<div class="edui-box edui-icon edui-default"></div>
+							<div class="edui-box edui-label edui-default"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="imgs"></div>
+</html>
