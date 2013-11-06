@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.me.news" >
+
+<resultMap type="News" id="newsResult">
+	<id property="id" column="id"/>
+	<result property="title" column="title"/>
+	<result property="content" column="content"/>
+	<result property="time" column="time"/>
+</resultMap>
+
+<insert id="save" keyProperty="id" useGeneratedKeys="true" >
+	insert into news(title, content, time) values(#{title}, #{content}, #{time})
+</insert>
+
+<select id="get" resultMap="newsResult">
+	select * from news where id = #{id}
+</select>
+
+<select id="query" resultMap="newsResult">
+	select * from news order by time
+</select>
+
+<update id="update" >
+	update news
+			set title=#{title}, content=#{content}
+			where id=#{id}
+	
+</update>
+
+<delete id="delete" >
+	delete from news where id=#{id}
+</delete>
+
+</mapper>

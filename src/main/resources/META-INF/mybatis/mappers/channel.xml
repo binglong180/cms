@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.me.channel" >
+
+<resultMap type="Channel" id="channelResult">
+	<id property="id" column="id"/>
+	<result property="name" column="name"/>
+	<association property="father" column="father_id" javaType="Channel" resultMap="fatherChannelResult" />
+	<collection property="children" ofType="Channel" resultMap="childrenChannelResult"/>
+</resultMap>
+
+<resultMap type="Channel" id="fatherChannelResult">
+	<id property="id" column="father_id"/>
+	<result property="name" column="father_name"/>
+</resultMap>
+
+<resultMap type="Channel" id="childrenChannelResult">
+	<id property="id" column="child_id"/>
+	<result property="name" column="child_name"/>
+</resultMap>
+
+<select id="query" resultMap="channelResult">
+ 	select   
+		self.*,
+		father.id as father_id,
+		father.name as father_name,
+		children.id as child_id,
+		children.name as child_name
+	from channel self
+	left join channel father on self.father_id=father.id 
+	left join channel children on self.id=children.father_id
+	where self.father_id is null 
+</select> 
+
+<select id="queryChildById" resultMap="channelResult">
+	select * from channel where channel.father_id=#{id}
+</select>
+
+<select id="queryTop" resultMap="channelResult">
+	select * from channel where channel.father_id is null
+</select>
+
+<insert id="save" keyProperty="id" useGeneratedKeys="true" >
+	insert into channel(name,father_id)
+				values(#{name},#{father.id})
+</insert>
+<update id="update" >
+	update channel
+			set name=#{name}, father_id=#{father.id}
+			where id=#{id}
+	
+</update>
+
+
+<delete id="delete" >
+	delete from channel where id=#{id}
+</delete>
+
+<delete id="deleteById" >
+	delete from channel where id=#{id}
+</delete>
+
+<select id="getOne" resultMap="channelResult">
+	select   
+		self.*,
+		father.id as father_id,
+		father.name as father_name,
+		children.id as child_id,
+		children.name as child_name
+	from channel self
+	left join channel father on self.father_id=father.id 
+	left join channel children on self.id=children.father_id
+	where self.id=#{id}
+</select>
+</mapper>

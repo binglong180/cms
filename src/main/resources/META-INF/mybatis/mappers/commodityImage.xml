@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.me.commodityImage" >
+
+<resultMap type="Commodity" id="commodityResult">
+	<id property="id" column="id"/>
+</resultMap>
+
+<resultMap type="CommodityImage" id="commodityImageResult">
+	<id property="id" column="id"/>
+	<result property="path" column="path"/>
+	<association property="commodity" column="commodity_id" javaType="Commodity" resultMap="CommodityResult"></association>
+</resultMap>
+
+<insert id="save" keyProperty="id" useGeneratedKeys="true" >
+	insert into commodity_image(path, commodity_id)
+				values(#{path}, #{commodity.id})
+</insert>
+
+<update id="update" >
+	update commodity_image
+			set path=#{path}
+			where id=#{id}
+	
+</update>
+
+<delete id="clean" >
+	delete from commodity_image where commodity_id=#{id}
+</delete>
+
+</mapper>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.me.commodity" >
+
+<resultMap type="Commodity" id="commodityResult">
+	<id property="id" column="id"/>
+	<result property="commodityName" column="commodity_name"/>
+	<result property="price" column="price"/>
+	<result property="described" column="described"/>
+	<association property="channel" column="channel_id" javaType="Channel" resultMap="channelResult" />
+	<collection property="images" ofType="CommodityImage" resultMap="commodityImageResult"/>
+	<collection property="attributes" ofType="CommodityAttribute" resultMap="commodityAttributeResult"/>
+</resultMap>
+
+<resultMap type="Channel" id="channelResult">
+	<id property="id" column="channel_id"/>
+	<result property="name" column="channel_name"/>
+</resultMap>
+
+<resultMap type="Channel" id="channelChildResult">
+	<id property="id" column="channel_child_id"/>
+	<result property="name" column="channel_child_name"/>
+</resultMap>
+
+<resultMap type="CommodityImage" id="commodityImageResult">
+	<id property="id" column="image_id"/>
+	<result property="path" column="image_path"/>
+</resultMap>
+
+<resultMap type="CommodityAttribute" id="commodityAttributeResult">
+	<id property="id" column="k_id"/>
+	<result property="name" column="k_name"/>
+	<collection property="values" ofType="CommodityAttribute" resultMap="commodityAttributeValuesResult"/>
+</resultMap>
+
+<resultMap type="CommodityAttribute" id="commodityAttributeValuesResult">
+	<id property="id" column="v_id"/>
+	<result property="name" column="v_name"/>
+</resultMap>
+
+<insert id="save" keyProperty="id" useGeneratedKeys="true" >
+	insert into commodity(commodity_name, price, described, channel_id)
+				values(#{commodityName}, #{price}, #{described}, #{channel.id})
+</insert>
+
+<update id="update" >
+	update commodity
+			set commodity_name=#{commodityName}, price=#{price}, described=#{described}
+			where id=#{id}
+	
+</update>
+
+<select id="query" resultMap="commodityResult">
+	select   
+		self.id,
+		self.commodity_name,
+		self.price,
+		c.id as channel_id,
+		c.name as channel_name,
+		i.id as image_id,
+		i.path as image_path
+	from commodity self
+	left join channel c on self.channel_id=c.id 
+	left join commodity_image i on self.id=i.commodity_id
+	group by self.id
+</select>
+
+<select id="queryPageById" resultMap="commodityResult">
+	select   
+		self.id,
+		self.commodity_name,
+		self.price,
+		c.id as channel_id,
+		c.name as channel_name,
+		i.id as image_id,
+		i.path as image_path
+	from commodity self
+	left join channel c on self.channel_id=c.id 
+	left join commodity_image i on self.id=i.commodity_id
+	where c.id = #{id}
+	group by self.id
+</select>
+
+<select id="get" resultMap="commodityResult">
+	select   
+		self.id,
+		self.commodity_name,
+		self.price,
+		self.described,
+		c.id as channel_id,
+		c.name as channel_name,
+		i.id as image_id,
+		i.path as image_path,
+		k.id as k_id,
+		k.name as k_name,
+		v.id as v_id,
+		v.name as v_name
+		
+	from commodity self
+	left join channel c on self.channel_id=c.id 
+	left join commodity_image i on self.id=i.commodity_id
+	left join commodity_attribute k on (k.commodity_id = self.id) and ISNULL(k.key_id)
+	left join commodity_attribute v on v.commodity_id = self.id and v.key_id = k.id
+	where self.id = #{id}
+</select>
+
+<select id="queryPageByChannelName" resultMap="commodityResult">
+	select 
+		self.id,
+		self.commodity_name,
+		self.price, 
+		i.id as image_id,
+		i.path as image_path
+
+ from commodity self
+	left join commodity_image i on self.id=i.commodity_id
+ where self.channel_id in (select channel.id from channel where channel.father_id in (select channel.id from channel where channel.`name` = #{channelName}))
+group by self.id
+		
+</select>
+
+<select id="getSimpleCommodity" resultMap="commodityResult">
+	select   
+		self.id
+	from commodity self
+	where self.id = #{id}
+</select>
+
+<delete id="delete" >
+	delete from commodity where id=#{id}
+</delete>
+
+
+</mapper>

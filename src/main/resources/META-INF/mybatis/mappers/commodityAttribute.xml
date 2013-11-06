@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.me.commodityAttribute" >
+
+<resultMap type="Commodity" id="commodityResult">
+	<id property="id" column="id"/>
+</resultMap>
+
+<resultMap type="CommodityAttribute" id="keyResult">
+	<id property="id" column="id"/>
+</resultMap>
+
+<resultMap type="CommodityAttribute" id="commodityAttributeResult">
+	<id property="id" column="id"/>
+	<result property="name" column="name"/>
+	<association property="key" column="key_id" javaType="CommodityAttribute" resultMap="keyResult"/>
+	<association property="commodity" column="commodity_id" javaType="Commodity" resultMap="CommodityResult"/>
+</resultMap>
+
+<insert id="save" keyProperty="id" useGeneratedKeys="true" >
+	insert into commodity_attribute(name, key_id, commodity_id)
+				values(#{name}, #{key.id}, #{commodity.id})
+</insert>
+
+<update id="update" >
+	update commodity_attribute
+			set name=#{name}, key_id=#{key.id}
+			where id=#{id}
+	
+</update>
+
+<delete id="clean" >
+	delete from commodity_attribute where commodity_id=#{id}
+</delete>
+
+</mapper>

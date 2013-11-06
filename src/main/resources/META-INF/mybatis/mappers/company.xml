@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.me.company" >
+
+<resultMap type="Company" id="companyResult">
+	<id property="id" column="id"/>
+	<result property="companyName" column="company_name"/>
+	<result property="companyIntro" column="company_intro"/>
+	<result property="companyAddress" column="company_address"/>
+	<result property="companyTelephone" column="company_telephone"/>
+	<result property="companyFax" column="company_fax"/>
+	<result property="companyEmail" column="company_email"/>
+</resultMap>
+
+<select id="getCompany" resultMap="companyResult">
+	select * from company where id = 1
+</select>
+
+<update id="update" >
+	update company
+			set 
+			company_name=#{companyName}, 
+			company_intro=#{companyIntro},
+			company_address=#{companyAddress}, 
+			company_telephone=#{companyTelephone},
+			company_fax=#{companyFax}, 
+			company_email=#{companyEmail}
+			where id=1
+	
+</update>
+
+</mapper>

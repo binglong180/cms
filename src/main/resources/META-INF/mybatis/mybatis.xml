@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration >
+	<typeAliases>
+		<typeAlias type="com.linxs.lowrie.domain.channel.Channel" alias="Channel" />
+		<typeAlias type="com.linxs.lowrie.domain.user.User" alias="User" />
+		<typeAlias type="com.linxs.lowrie.domain.blog.Blog" alias="Blog" />
+		<typeAlias type="com.linxs.lowrie.domain.news.News" alias="News" />
+		<typeAlias type="com.linxs.lowrie.domain.commodity.Commodity" alias="Commodity" />
+		<typeAlias type="com.linxs.lowrie.domain.commodity.CommodityImage" alias="CommodityImage" />
+		<typeAlias type="com.linxs.lowrie.domain.commodity.CommodityAttribute" alias="CommodityAttribute" />
+		<typeAlias type="com.linxs.lowrie.domain.company.Company" alias="company" />
+	</typeAliases>
+	
+	<plugins>
+		<plugin interceptor="com.kissme.core.orm.mybatis.MybatisPagePlugin">
+			<property name="dialect" value="com.kissme.core.orm.dialect.impl.MySQLDialect" />
+		</plugin>
+	</plugins>
+</configuration>
