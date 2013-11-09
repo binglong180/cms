@@ -11,6 +11,7 @@
 		<typeAlias type="com.linxs.lowrie.domain.commodity.CommodityImage" alias="CommodityImage" />
 		<typeAlias type="com.linxs.lowrie.domain.commodity.CommodityAttribute" alias="CommodityAttribute" />
 		<typeAlias type="com.linxs.lowrie.domain.company.Company" alias="company" />
+		<typeAlias type="com.linxs.lowrie.domain.resources.Image" alias="Image" />
 	</typeAliases>
 	
 	<plugins>

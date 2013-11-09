@@ -20,4 +20,12 @@
 <select id="getByUsername" resultMap="userResult">
 	select self.* from user self where self.username = #{id}
 </select> 
+
+<update id="update" >
+	update user
+			set password=#{password}
+			where id=#{id}
+	
+</update>
+
 </mapper>

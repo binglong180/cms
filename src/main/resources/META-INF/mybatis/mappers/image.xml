@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.me.image" >
+
+<resultMap type="Image" id="imageResult">
+	<id property="id" column="id"/>
+	<result property="title" column="title"/>
+	<result property="path" column="path"/>
+	<result property="type" column="type"/>
+</resultMap>
+
+<insert id="save" keyProperty="id" useGeneratedKeys="true" >
+	insert into image(title, path, type) values(#{title}, #{path}, #{type})
+</insert>
+
+<select id="get" resultMap="imageResult">
+	select * from image where id = #{id}
+</select>
+
+<select id="getLogo" resultMap="imageResult">
+	select * from image where type = 1
+</select>
+
+<select id="queryFocusPictures" resultMap="imageResult">
+	select * from image where type = 0 order by id
+</select>
+
+<update id="update" >
+	update image
+			set title=#{title}
+			where id=#{id}
+	
+</update>
+
+<delete id="delete" >
+	delete from image where id=#{id}
+</delete>
+
+</mapper>
