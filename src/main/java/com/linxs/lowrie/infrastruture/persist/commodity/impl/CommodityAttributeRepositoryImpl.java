@@ -8,7 +8,7 @@ import com.linxs.lowrie.infrastruture.persist.commodity.CommodityAttributeReposi
 
 /**
  * 
- * @author Linxiaosheng
+ * @author Linxs
  *
  */
 @Repository

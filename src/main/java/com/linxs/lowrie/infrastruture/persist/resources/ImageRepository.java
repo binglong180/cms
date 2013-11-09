@@ -6,7 +6,7 @@ import com.linxs.lowrie.domain.resources.Image;
 
 /**
  * 
- * @author Linxiaosheng
+ * @author Linxs
  *
  */
 public interface ImageRepository {

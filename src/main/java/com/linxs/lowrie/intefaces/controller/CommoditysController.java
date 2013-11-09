@@ -14,7 +14,7 @@ import com.linxs.lowrie.domain.commodity.Commodity;
 
 /**
  * 
- * @author Linxiaosheng
+ * @author Linxs
  *
  */
 @Controller

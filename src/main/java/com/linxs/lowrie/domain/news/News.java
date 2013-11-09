@@ -6,7 +6,7 @@ import com.kissme.core.domain.AbstractDomain;
 
 /**
  * 
- * @author Linxiaosheng
+ * @author Linxs
  * 
  */
 public class News extends AbstractDomain {

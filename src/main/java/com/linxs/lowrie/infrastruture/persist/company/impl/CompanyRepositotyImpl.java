@@ -8,7 +8,7 @@ import com.linxs.lowrie.infrastruture.persist.company.CompanyRepositoty;
 
 /**
  * 
- * @author Linxiaosheng
+ * @author Linxs
  *
  */
 @Repository

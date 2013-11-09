@@ -10,7 +10,7 @@ import com.linxs.lowrie.infrastruture.persist.news.NewsRepository;
 
 /**
  * 
- * @author Linxiaosheng
+ * @author Linxs
  *
  */
 @Service

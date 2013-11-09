@@ -12,7 +12,7 @@ import com.linxs.lowrie.application.resources.ResourcesService;
 
 /**
  * 
- * @author Linxiaosheng
+ * @author Linxs
  *
  */
 @Controller

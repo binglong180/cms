@@ -5,7 +5,7 @@ import com.linxs.lowrie.domain.news.News;
 
 /**
  * 
- * @author Linxiaosheng
+ * @author Linxs
  *
  */
 public interface NewsRepository {

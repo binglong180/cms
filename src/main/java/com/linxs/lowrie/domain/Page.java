@@ -7,7 +7,7 @@ import java.util.List;
 import org.apache.commons.lang.StringUtils;
 
 /**
- * @author Linxiaosheng
+ * @author Linxs
  */
 public class Page<T> {
 

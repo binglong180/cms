@@ -4,7 +4,7 @@ import com.linxs.lowrie.domain.company.Company;
 
 /**
  * 
- * @author Linxiaosheng
+ * @author Linxs
  *
  */
 public interface CompanyRepositoty {

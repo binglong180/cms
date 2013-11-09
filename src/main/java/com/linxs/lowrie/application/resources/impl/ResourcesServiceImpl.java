@@ -11,7 +11,7 @@ import com.linxs.lowrie.infrastruture.persist.resources.ImageRepository;
 
 /**
  * 
- * @author Linxiaosheng
+ * @author Linxs
  *
  */
 @Service

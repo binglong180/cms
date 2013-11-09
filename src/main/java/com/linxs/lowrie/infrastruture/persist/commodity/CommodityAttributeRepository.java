@@ -4,7 +4,7 @@ import com.linxs.lowrie.domain.commodity.CommodityAttribute;
 
 /**
  * 
- * @author Linxiaosheng
+ * @author Linxs
  *
  */
 public interface CommodityAttributeRepository {

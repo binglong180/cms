@@ -15,7 +15,7 @@ import com.linxs.lowrie.intefaces.utils.MD5Utils;
 
 /**
  * 
- * @author Linxiaosheng
+ * @author Linxs
  *
  */
 @Controller
