@@ -7,9 +7,15 @@
 	$(function() {
 		
 		$("#cms-channel-create-submit").click(function() {
+		
+			var loadingBox = newAlertBox("loadingBox");
+			loadingBox.show();
+			$("#loadingBox").css("z-index", 20000);
+			
 			$("#cms-channel-form").ajaxSubmit({
 				async: false,
 				success : function() {
+					loadingBox.close();
 					$("#cms-channel-form").remove();
 					$(".cms-left")[0].click();
 				}

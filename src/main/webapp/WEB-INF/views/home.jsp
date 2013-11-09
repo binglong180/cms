@@ -49,11 +49,9 @@ h1 {height:50px; line-height:50px; font-size:22px; font-weight:normal; font-fami
     <div class="banner">
    <div id="focus">
 		<ul style="margin-left: 25px;">
-			<li><a href="#none" target="_blank"><img src="${ctx }/resources/images/fore/banner.jpg" alt="QQ商城焦点图效果下载" style="width: 960px; height: 397px;" /></a></li>
-			<li><a href="#none" target="_blank"><img src="${ctx }/resources/images/fore/banner2.jpg" alt="QQ商城焦点图效果教程" style="width: 960px; height: 397px;"/></a></li>
-			<li><a href="#none" target="_blank"><img src="${ctx }/resources/images/fore/banner.jpg" alt="jquery商城焦点图效果" style="width: 960px; height: 397px;"/></a></li>
-			<li><a href="#none" target="_blank"><img src="${ctx }/resources/images/fore/banner2.jpg" alt="jquery商城焦点图代码" style="width: 960px; height: 397px;"/></a></li>
-			<li><a href="#none" target="_blank"><img src="${ctx }/resources/images/fore/banner.jpg" alt="jquery商城焦点图源码" style="width: 960px; height: 397px;"/></a></li>
+			<c:forEach items="${focusPictures}" var="image">
+				<li><a href="${image.title}" target="_blank"><img src="${ctx }${image.path}" style="width: 960px; height: 397px;" /></a></li>
+			</c:forEach>
 		</ul>
 	</div>
     <!-- 代码结束 -->
@@ -80,34 +78,34 @@ h1 {height:50px; line-height:50px; font-size:22px; font-weight:normal; font-fami
                         
           		</c:forEach>
   			</div>
-            <h1>公司视频</h1>
+            <h1>产品演示视频</h1>
   <div class="video">
             		<div class="video_left">
-          		    <video src="http://www.w3school.com.cn/i/movie.ogg"  width="456" height="370" controls="controls">
-					Your browser does not support the video tag.
-					</video>
+          		    <iframe height="350" width="450" src="http://player.youku.com/embed/XNTYzODYwMDky" frameborder=0 allowfullscreen></iframe>
             		</div>
     <div class="video_right">
-                    	<h3>三星和LG</h3>
-                        <p>在2009年加入了由他的儿子肖恩廉，前LG和三星，现在运行该公司的全球业务来自英国的供应链专家GJ廉。自加入本公司以来，肖恩扮演的VectorFog™产品的设计和制造中不可或缺的一部分。</p>
+                    	<h3>双重热力喷雾机</h3>
+                        <p>热力喷雾机使用范围：</br>
+    1、园林、果园、茶园的病虫害防治；</br>
+    2、棉花、小麦、水稻、玉米、蔬菜大棚等农作物以及草场的病虫害防治；</br>
+    3、城市下水道、地下室、防空洞、垃圾场、高楼层的垃圾通道、公共厕所以及大型仓库的消毒杀菌及蚊虫消杀；</br>
+    4、医院、影剧院、体育馆、商务大厦、车站码头、餐馆饭店等密闭场所的卫生消毒及虫害处理；</br>
+    5、牛、马、猪、鸡等畜禽养殖场的消毒灭菌处理等。</p>
     </div>
     <div class="video_leftone">
-                    	<h3>三星和LG</h3>
-                        <p>在2009年加入了由他的儿子肖恩廉，前LG和三星，现在运行该公司的全球业务来自英国的供应链专家GJ廉。自加入本公司以来，肖恩扮演的VectorFog™产品的设计和制造中不可或缺的一部分。</p>
+                    	<h3>Ts一10系列热力喷雾机</h3>
+                        <p>是一种应用冲压式火箭发动机为动力的、以超低容量方式施放杀虫杀菌药剂的高新技术产品。</br>
+                        工作效率高:本机每小时可对果树施药达17亩到27亩(视果树高度及密度不同).是其它施药器材的十几倍。杀灭率高:由于其施放无死角、附着力好、抗雨水冲刷等特点</p>
     </div>
     <div class="video_rightone">
-       <video src="http://www.w3school.com.cn/i/movie.ogg"  width="456" height="370" controls="controls">
-					Your browser does not support the video tag.
-					</video>
+       <iframe height="350" width="450" src="http://player.youku.com/embed/XNTY1OTA2NzY4" frameborder=0 allowfullscreen></iframe>
     </div>
    	<div class="video_lefttwo">
-   	  <video src="http://www.w3school.com.cn/i/movie.ogg"  width="456" height="370" controls="controls">
-					Your browser does not support the video tag.
-					</video>
+   	  <iframe height="350" width="450" src="http://player.youku.com/embed/XNTc3NTc2NTIw" frameborder=0 allowfullscreen></iframe>
    	</div>
         <div class="video_righttwo">
-                    	<h3>三星和LG</h3>
-                        <p>在2009年加入了由他的儿子肖恩廉，前LG和三星，现在运行该公司的全球业务来自英国的供应链专家GJ廉。自加入本公司以来，肖恩扮演的VectorFog™产品的设计和制造中不可或缺的一部分。</p>
+                    	<h3>TS一35系列热力喷雾机</h3>
+                        <p>射程大:对于果树、林木等高度大的作业环境.其效率是无所匹敌的。穿透力强:由于是颗粒极小的烟雾，有极高穿透力和渗透力。对于密度大的棉田，中后期小麦、水稻.蔗田、高粱、玉米等高秆植物，以及下水道，垃圾道等曲折迂回、有死角而无法直接施药的场所，有很好的效果。</p>
     </div>
     
   </div>

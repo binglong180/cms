@@ -31,7 +31,34 @@
 </style>
 <script type="text/javascript">
 	$(function() {
-		
+		$("#changePassword").click(function() {
+			var password = $("#password").val();
+			var rePassword = $("#rePassword").val();
+			
+			if(password.length < 6) {
+				alert("输入的密码长度要超过6位");
+				return false;
+			}
+			
+			if(password !== rePassword) {
+				alert("两次输入的密码不一致");
+				return false;
+			}
+			
+			$.ajax({
+				url : "${ctx}/admin/security-reset.do",
+				data : {
+					"password" : password
+				},
+				type : "post",
+				success : function(data) {
+					if(data === 'success') {
+						alert("密码修改成功！为确保账户安全，您需要重新登录系统");
+						location.href = "${ctx}/login.do";
+					}
+				}
+			});
+		});
 	});
 </script>
 	<div class="span12">
@@ -41,24 +68,24 @@
 				<div class="control-group">
 					<label class="control-label" for="input01">帐号</label>
 					<div class="controls">
-						<form:input path="username" class="input-block-level" placeholder="请输入用户名..."/>
+						<form:input path="username" readonly="true" class="input-block-level" placeholder="请输入用户名..."/>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="input01">密码</label>
 					<div class="controls">
-						<form:password path="password" class="input-block-level" placeholder="请输入密码..."/>
+						<form:password path="password" id="password" class="input-block-level" placeholder="请输入密码..."/>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="input01">确认密码</label>
 					<div class="controls">
-						<input type="password" class="input-block-level" placeholder="请再次输入密码..."/>
+						<input type="password" id="rePassword" class="input-block-level" placeholder="请再次输入密码..."/>
 					</div>
 				</div>
 				
 				<div class="form-actions">
-					<a type="button" href="#none" id="" class="btn btn-primary">保存更改</a>
+					<a type="button" href="#none" id="changePassword" class="btn btn-primary">保存更改</a>
 					<a class="btn" href="#none" id="">取消</a>
 				</div>
 			</fieldset>

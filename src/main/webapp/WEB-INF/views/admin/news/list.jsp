@@ -12,25 +12,13 @@
 	$(function() {
 		$("#cms-news-create").click(function() {
 		
-			var loadingBox = newAlertBox("loadingBox");
-			loadingBox.show();
-			$("#loadingBox").css("z-index", 20000);
-		
-			$("#right").load("${ctx}/admin/news-create.do", function() {
-				loadingBox.close();
-			});
+			$("#right").load("${ctx}/admin/news-create.do");
 		});
 		
 		$(".cms-news-edit").click(function() {
 			var id = $(this).attr("lang");
 			
-			var loadingBox = newAlertBox("loadingBox");
-			loadingBox.show();
-			$("#loadingBox").css("z-index", 20000);
-			
-			$("#right").load("${ctx}/admin/news-edit.do?id=" + id, function() {
-				loadingBox.close();
-			});
+			$("#right").load("${ctx}/admin/news-edit.do?id=" + id);
 		});
 		
 		$(".cms-news-remove").click(function() {

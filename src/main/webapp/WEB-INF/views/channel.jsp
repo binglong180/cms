@@ -44,8 +44,11 @@ html{
                     </div>
             	</c:forEach>
             	
-            	
+            	<jsp:include page="/commons/page.jsp" flush="true" >
+		  			 <jsp:param name="pageLink" value="${ctx }/channel.do" ></jsp:param>
+		  		  </jsp:include>
             </div>
+            
         </div>
    
 <div class="foot">

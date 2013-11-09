@@ -31,11 +31,9 @@ html{
             
    			</c:forEach>
          
-            <div class="new_page">
-                            <span><a href="#">上一页</a> <a href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">5</a> <a href="#">下一页</a></span>
-                            <span>转到 <img src="${ctx }/resources/images/fore/page.jpg" width="32" height="19" /> 页</span> 
-                            <a href="#"><img src="${ctx }/resources/images/fore/page_confirmi.jpg" width="43" height="22" /> </a>
-                        </div>
+             <jsp:include page="/commons/page.jsp" flush="true" >
+	  			 <jsp:param name="pageLink" value="${ctx }/news.do" ></jsp:param>
+	  		  </jsp:include>
         </div>    
                                      
    

@@ -15,8 +15,14 @@ body {
 	$(function() {
 		
 		$(document).on('click', '#create-channel', function() {
+			var loadingBox = newAlertBox("loadingBox");
+			loadingBox.show();
+			$("#loadingBox").css("z-index", 20000);
+			
 			var targetUrl = $(this).attr("lang");
-			$("#right").load(targetUrl);
+			$("#right").load(targetUrl, function() {
+				loadingBox.close();
+			});
 		});
 		
 		$(".cms-channel-delete").click(function() {
@@ -27,11 +33,22 @@ body {
 		});
 		
 		$(".cms-channel-edit").click(function() {
+			var loadingBox = newAlertBox("loadingBox");
+			loadingBox.show();
+			$("#loadingBox").css("z-index", 20000);
+		
 			var id = $(this).attr("lang");
-			$("#right").load("${ctx}/admin/channel-edit.do?id=" + id);
+			$("#right").load("${ctx}/admin/channel-edit.do?id=" + id, function() {
+				loadingBox.close();
+			});
 		});
 		
 		$("#cms-ensure-delete-channel").click(function() {
+			
+			var loadingBox = newAlertBox("loadingBox");
+			loadingBox.show();
+			$("#loadingBox").css("z-index", 20000);
+			
 			var id = $('#cms-delete-modal').attr("lang");
 			$.ajax({
 				url : "${ctx}/admin/channel-delete.do",
@@ -41,6 +58,7 @@ body {
 					"id" : id
 				},
 				success : function(data) {
+					loadingBox.close();
 					if(data === "success") {
 						$('#cms-delete-modal').modal('hide');
 						$("#cms-channel-row-".concat(id)).hide("slow");
@@ -51,8 +69,15 @@ body {
 		
 		
 		$(".cms-create-children").click(function() {
+			
+			var loadingBox = newAlertBox("loadingBox");
+			loadingBox.show();
+			$("#loadingBox").css("z-index", 20000);
+			
 			var url = $(this).attr("lang");
-			$("#right").load(url);
+			$("#right").load(url, function() {
+				loadingBox.close();
+			});
 		});
 		
 		

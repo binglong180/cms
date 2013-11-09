@@ -6,17 +6,14 @@
 <%@include file="/commons/taglibs.jsp"%>
 <%@include file="/commons/no-cache.jsp"%>
 <%@include file="/commons/common-header.jsp"%>
-<script src="${ctx }/resources/js/jquery-timer.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(function() {
-		$("#current").timer({format: "yy年mm月dd日 W HH:MM:ss"});
 	});
 </script>
 </head>
 <body>
 	<div class="hero-unit">
 		<legend>广州竭诚所至贸易有限公司企业网站后台管理系统</legend>
-		<p>当前系统时间：<span id="current" class="badge"></span></p>
 		<li>服务器系统：${props['os.name'] }</li>
 		<li>服务器系统版本：${props['os.version'] }</li>
 		<li>JAVA运行时环境：${props['java.version'] }</li>

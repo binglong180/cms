@@ -6,8 +6,13 @@
 <script type="text/javascript">
 	$(function() {
 		$("#cms-contactus-submit").click(function() {
+			var loadingBox = newAlertBox("loadingBox");
+			loadingBox.show();
+			$("#loadingBox").css("z-index", 20000);
+			
 			$("#cms-company-contact-form").ajaxSubmit({
 				success : function(data) {
+					loadingBox.close();
 					if(data === "success") {
 						alert("修改成功！");
 						$(".cms-left")[1].click();

@@ -37,6 +37,7 @@
 				<ul class="nav nav-pills nav-stacked">
 					<li lang="about" ><a class="cms-left" id="about" lang="${ctx }/admin/about.do" href="#dropdowns"><i class="icon-list-alt"></i> 关于我们</a></li>
 					<li lang="contact" ><a href="#dropdowns" class="cms-left" id="contact" lang="${ctx }/admin/contact.do"><i class="icon-list-alt"></i> 联系方式</a></li>
+					<li lang="resource" ><a href="#dropdowns" class="cms-left" id="resource" lang="${ctx }/admin/resources.do"><i class="icon-list-alt"></i> 资源管理</a></li>
 				</ul>
 			</div>
 

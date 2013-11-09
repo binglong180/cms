@@ -80,6 +80,10 @@
 		$('#describeEditor').wysiwyg();
 		
 		$("#cms-commodity-from-submit").click(function() {
+		
+			var loadingBox = newAlertBox("loadingBox");
+			loadingBox.show();
+			$("#loadingBox").css("z-index", 20000);
 			
 			createCommodityImagesData();
 			createCommodityDescribeData();
@@ -87,6 +91,7 @@
 			
 			$("#cms-commodity-form").ajaxSubmit({
 				success : function(data) {
+					loadingBox.close();
 					if(data === "success") {
 						$(".cms-left")[1].click();
 					}

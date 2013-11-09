@@ -16,10 +16,6 @@
 		
 		$("#cms-channel-top").click(function() {
 			
-			var loadingBox = newAlertBox("loadingBox");
-			loadingBox.show();
-			$("#loadingBox").css("z-index", 20000);
-					
 			var id = $(this).val();
 			if(id === "") {
 				return false;
@@ -32,11 +28,10 @@
 				dataType : "json",
 				type : "get",
 				success : function(data) {
-					loadingBox.close();
 					if(data.length > 0) {
 						var html = "";
 						$.each(data, function(index, item) {
-							html = html + "<option value='" + item.id + "'>" + item.name + "</option>"
+							html = html + "<option value='" + item.id + "'>" + item.name + "</option>";
 						});
 						$("#cms-channel-bottom").append(html);
 						$("#cms-channel-bottom").attr("style", "");

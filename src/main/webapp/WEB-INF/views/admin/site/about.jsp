@@ -55,9 +55,15 @@
 		$('#companyIntroEditor').wysiwyg();
 		
 		$("#cms-aboutus-submit").click(function() {
+			
+			var loadingBox = newAlertBox("loadingBox");
+			loadingBox.show();
+			$("#loadingBox").css("z-index", 20000);
+		
 			$("#companyIntro").attr("value", $("#companyIntroEditor").html());
 			$("#cms-company-form").ajaxSubmit({
 				success : function(data) {
+					loadingBox.close();
 					if(data === "success") {
 						alert("修改成功！");
 						$(".cms-left")[0].click();
