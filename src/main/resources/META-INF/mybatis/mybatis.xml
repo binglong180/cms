@@ -5,7 +5,6 @@
 	<typeAliases>
 		<typeAlias type="com.linxs.lowrie.domain.channel.Channel" alias="Channel" />
 		<typeAlias type="com.linxs.lowrie.domain.user.User" alias="User" />
-		<typeAlias type="com.linxs.lowrie.domain.blog.Blog" alias="Blog" />
 		<typeAlias type="com.linxs.lowrie.domain.news.News" alias="News" />
 		<typeAlias type="com.linxs.lowrie.domain.commodity.Commodity" alias="Commodity" />
 		<typeAlias type="com.linxs.lowrie.domain.commodity.CommodityImage" alias="CommodityImage" />
