@@ -103,4 +103,10 @@ public class CommodityServiceImpl implements CommodityService {
 		return commodityRepository.queryPageById(id, page);
 	}
 
+	@Override
+	public Page<Commodity> queryPageByChannelId(String id, Page<Commodity> page) {
+		
+		return commodityRepository.queryPageByChannelId(id, page);
+	}
+
 }

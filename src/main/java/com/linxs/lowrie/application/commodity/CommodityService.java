@@ -19,11 +19,13 @@ public interface CommodityService {
 	public void update(Commodity commodity); 
 
 	public void delete(Commodity commodity);
- 
+  
 	public Commodity getSimpleCommodity(int id); 
 
 	public Page<Commodity> queryPageById(int id, Page<Commodity> page);
 
 	Page<Commodity> queryPageByChannelName(String channelName, Page<Commodity> page);
+
+	public Page<Commodity> queryPageByChannelId(String id, Page<Commodity> page);
 
 }

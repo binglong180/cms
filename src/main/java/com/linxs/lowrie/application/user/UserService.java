@@ -13,5 +13,7 @@ public interface UserService {
 
 	public User getByUsername(String username);
 
+	public void update(User user);
+
 	 
-} 
+}  

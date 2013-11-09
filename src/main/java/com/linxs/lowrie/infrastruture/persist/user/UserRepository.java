@@ -11,7 +11,9 @@ public interface UserRepository {
 
 	public void save(User user);
 
-	public User getByUsername(String username);
+	public User getByUsername(String username); 
+
+	public void update(User user);
 	
 }
  

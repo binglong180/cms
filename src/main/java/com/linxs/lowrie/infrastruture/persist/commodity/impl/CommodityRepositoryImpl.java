@@ -70,4 +70,12 @@ public class CommodityRepositoryImpl extends MybatisRepositorySupport<Integer, C
 		page.setResult(Commoditys);
 		return page;
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public Page<Commodity> queryPageByChannelId(String id, Page<Commodity> page) {
+		List<Commodity> commoditys = getSqlSession().selectList(getNamespace() + ".queryPageByChannelId", id);
+		page.setResult(commoditys);
+		return page;
+	}
 }

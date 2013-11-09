@@ -29,5 +29,9 @@ public class UserRepositoryImpl extends MybatisRepositorySupport<Integer, User> 
 		return (User) getSqlSession().selectOne(getNamespace() + ".getByUsername", username); 
 	}
 	
+	@Override
+	public void update(User user) {
+		getSqlSession().update(getNamespace() + ".update", user);
+	}
 
 }
