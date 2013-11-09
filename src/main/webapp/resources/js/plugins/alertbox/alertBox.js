@@ -245,7 +245,7 @@ var OverLay = function(){
 }()
 
 /**
- * @author Linxiaosheng
+ * @author Linxs
  * @param id
  * @return
  */
