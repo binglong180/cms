@@ -56,15 +56,9 @@
 		$('#contentEditor').wysiwyg();
 		
 		$("#cms-news-from-submit").click(function() {
-		
-			var loadingBox = newAlertBox("loadingBox");
-			loadingBox.show();
-			$("#loadingBox").css("z-index", 20000);
-			
 			var content = $("#contentEditor").html();
 			$("#cms-news-content").attr("value", content);
 			$("#cms-news-form").ajaxSubmit({
-				loadingBox.close();
 				success : function(data) {
 					if("success" === data) {
 						$(".cms-left")[2].click();
