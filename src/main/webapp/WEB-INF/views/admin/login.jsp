@@ -71,7 +71,7 @@ $(function() {
 	<div class="container">
 
     <form:form class="form-signin" commandName="user">
-      <h2 class="form-signin-heading">CMS内容管理系统</h2>
+      <h3 class="form-signin-heading">竭诚所至-后台管理系统</h3>
       <form:input path="username" class="input-block-level" placeholder="输入用户名..." />
       <form:password path="password" class="input-block-level" placeholder="输入登录密码..." />
       <label class="checkbox">
