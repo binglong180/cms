@@ -51,6 +51,18 @@
 			});
 		});
 		
+		$(".cms-page-forward").click(function() {
+			var href = $(this).attr("lang");
+			
+			var loadingBox = newAlertBox("loadingBox");
+			loadingBox.show();
+			$("#loadingBox").css("z-index", 20000);
+			
+			$("#right").load(href, function() {
+				loadingBox.close();
+			});
+		});
+		
 	});
 </script>
 </head>
@@ -91,8 +103,8 @@
 			</tbody>
 		</table>
         
-          <jsp:include page="/commons/page.jsp" flush="true" >
-  			 <jsp:param name="pageLink" value="${ctx }/admin/news.do" ></jsp:param>
+          <jsp:include page="/commons/adminPage.jsp" flush="true" >
+  			 <jsp:param name="pageLink" value="${ctx }/admin/news.do?1=1" ></jsp:param>
   		  </jsp:include>
         
 	</div>

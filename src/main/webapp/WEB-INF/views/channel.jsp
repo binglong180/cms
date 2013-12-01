@@ -44,9 +44,20 @@ html{
                     </div>
             	</c:forEach>
             	
-            	<jsp:include page="/commons/page.jsp" flush="true" >
-		  			 <jsp:param name="pageLink" value="${ctx }/channel.do" ></jsp:param>
-		  		  </jsp:include>
+            	<c:choose>
+					<c:when test="${flag eq 'child'}">
+						<jsp:include page="/commons/page.jsp" flush="true" >
+		  			 		<jsp:param name="pageLink" value="${ctx }/channel-child.do?id=${target}" ></jsp:param>
+		  				</jsp:include>
+					</c:when>            		
+					<c:otherwise>
+						<jsp:include page="/commons/page.jsp" flush="true" >
+		  			 		<jsp:param name="pageLink" value="${ctx }/channel.do?id=${target}" ></jsp:param>
+		  				</jsp:include>
+					</c:otherwise>
+            	</c:choose>
+            	
+            	
             </div>
             
         </div>

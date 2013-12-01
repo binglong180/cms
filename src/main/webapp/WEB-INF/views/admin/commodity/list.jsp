@@ -166,8 +166,8 @@
 			</tbody>
 		</table>
         
-          <jsp:include page="/commons/page.jsp" flush="true" >
-  			 <jsp:param name="pageLink" value="${ctx }/admin/commodity.do" ></jsp:param>
+          <jsp:include page="/commons/adminPage.jsp" flush="true" >
+  			 <jsp:param name="pageLink" value="${ctx }/admin/commodity.do?1=1" ></jsp:param>
   		  </jsp:include>
         
         
