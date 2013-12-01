@@ -2,22 +2,23 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="/commons/taglibs.jsp"%>
 <c:set var="totalPages" value="${page.totalPages }"></c:set>
-<div class="pagination pagination-right">
-<ul>
+<div class="page">
+
+<span>
 <c:choose>
 	<c:when test="${not empty param.pageLink && totalPages > 1 }">
 		<c:choose>
 			<c:when test="${page.pageNo>1 && not empty param.pageLink }">
-				<li><a class="cms-page-forward" href="#none" lang="${param.pageLink}?pageNo=${((page.pageNo)-1)>0?(page.pageNo)-1:(page.pageNo)}">上一页</a></li>
+				<a   href="${param.pageLink}&pageNo=${((page.pageNo)-1)>0?(page.pageNo)-1:(page.pageNo)}">上一页</a>
 			</c:when>
 		</c:choose>
 		<c:choose>
 			<c:when test="${page.pageNo eq 1}">
-				<li><a class="cms-page-forward" href="#none" lang="${param.pageLink}?pageNo=1">1</a></li>
+				<a   href="${param.pageLink}&pageNo=1">1</a>
 <!-- 				&nbsp; -->
 			</c:when>						  
 			<c:otherwise>
-				<li><a class="cms-page-forward" href="#none" lang="${param.pageLink }?pageNo=1">1</a></li>
+				<a   href="${param.pageLink }&pageNo=1">1</a>
 <!-- 				&nbsp; -->
 			</c:otherwise>
 			</c:choose>
@@ -28,11 +29,11 @@
 						<c:forEach var="i" begin="2" end="${page.pageNo}">
 							<c:choose>
 								<c:when test="${page.pageNo eq i }">
-									<li><a class="cms-page-forward" href="#none" lang="${param.pageLink }?pageNo=${i}">${i}</a></li>
+									<a   href="${param.pageLink }&pageNo=${i}">${i}</a>
 <!-- 									&nbsp; -->
 								</c:when>
 								<c:otherwise>
-									<li><a class="cms-page-forward" href="#none" lang="${param.pageLink }?pageNo=${i }">${i}</a></li>
+									<a   href="${param.pageLink }&pageNo=${i }">${i}</a>
 <!-- 									&nbsp;   -->
 								</c:otherwise>
 							</c:choose>
@@ -43,11 +44,11 @@
 					<c:forEach var="i" begin="${page.pageNo-3}" end="${page.pageNo}">
 						<c:choose>
 							<c:when test="${page.pageNo eq i }">
-								<li><a class="cms-page-forward" href="#none" lang="${param.pageLink }?pageNo=${i }">${i}</a></li>
+								<a   href="${param.pageLink }&pageNo=${i }">${i}</a>
 <!-- 								&nbsp; -->
 							</c:when>
 							<c:otherwise>
-								<li><a class="cms-page-forward" href="#none" lang="${param.pageLink }?pageNo=${i }">${i}</a></li>
+								<a   href="${param.pageLink }&pageNo=${i }">${i}</a>
 <!-- 								&nbsp;   -->
 							</c:otherwise>
 						</c:choose>
@@ -57,11 +58,11 @@
 				<c:choose>
 					<c:when test="${page.pageNo>=totalPages-3  || totalPages-3<=0}">
 						<c:forEach var="i" begin="${page.pageNo+1}" end="${totalPages}">
-							<li><a class="cms-page-forward" href="#none" lang="${param.pageLink }?pageNo=${i}">${i}</a></li>
+							<a   href="${param.pageLink }&pageNo=${i}">${i}</a>
 <!-- 							&nbsp;   -->
 							<c:choose>
 								<c:when test="${page.pageNo eq i }">
-									<li><a   class="cms-page-forward" href="#none" lang="${param.pageLink }?pageNo=${i }">${i}</a></li>
+									<a     href="${param.pageLink }&pageNo=${i }">${i}</a>
 <!-- 									&nbsp; -->
 								</c:when>
 							</c:choose>
@@ -71,28 +72,28 @@
 						<c:forEach var="i" begin="${page.nextPage}" end="${page.pageNo+3}">
 							<c:choose>
 								<c:when test="${page.pageNo eq i }">
-									<li><a class="cms-page-forward" href="#none" lang="${param.pageLink }?pageNo=${i}">${i}</a></li>
+									<a   href="${param.pageLink }&pageNo=${i}">${i}</a>
 <!-- 									&nbsp; -->
 								</c:when>
 								<c:otherwise>
-									<li><a class="cms-page-forward" href="#none" lang="${param.pageLink }?pageNo=${i }">${i}</a></li>
+									<a   href="${param.pageLink }&pageNo=${i }">${i}</a>
 <!-- 									&nbsp;   -->
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
 <!-- 						 ...&nbsp;   -->
-						 <li><a class="cms-page-forward" href="#none" lang="${param.pageLink }?pageNo=${totalPages }">${totalPages}</a></li>
+						 <a   href="${param.pageLink }&pageNo=${totalPages }">${totalPages}</a>
 <!-- 						 &nbsp;   -->
 		        	</c:otherwise>
 				</c:choose>
 				<c:choose>
 					<c:when test="${page.pageNo < totalPages}">
-						<li><a class="cms-page-forward" href="#none" lang="${param.pageLink }?pageNo=${(page.nextPage) < totalPages?page.nextPage: totalPages}">下一页</a></li>
+						<a   href="${param.pageLink }&pageNo=${(page.nextPage) < totalPages?page.nextPage: totalPages}">下一页</a>
 					</c:when>
 				</c:choose>
 			</c:when>
 		</c:choose>
 	</c:when>
 	</c:choose>
-	</ul>
+	</span>
 </div>
