@@ -78,6 +78,22 @@
 	from commodity self
 	left join channel c on self.channel_id=c.id 
 	left join commodity_image i on self.id=i.commodity_id
+	where c.id = #{params.id}
+	group by self.id
+</select>
+
+<select id="queryCountPageById" resultMap="commodityResult">
+	select   
+		self.id,
+		self.commodity_name,
+		self.price,
+		c.id as channel_id,
+		c.name as channel_name,
+		i.id as image_id,
+		i.path as image_path
+	from commodity self
+	left join channel c on self.channel_id=c.id 
+	left join commodity_image i on self.id=i.commodity_id
 	where c.id = #{id}
 	group by self.id
 </select>
@@ -121,6 +137,20 @@ group by self.id
 </select>
 
 <select id="queryPageByChannelId" resultMap="commodityResult">
+	select 
+		self.id,
+		self.commodity_name,
+		self.price, 
+		i.id as image_id,
+		i.path as image_path
+
+ from commodity self
+	left join commodity_image i on self.id=i.commodity_id
+ where self.channel_id in (select channel.id from channel where channel.father_id in (select channel.id from channel where channel.`id` = #{params.id}))
+group by self.id
+		
+</select>
+<select id="queryCountPageByChannelId" resultMap="commodityResult">
 	select 
 		self.id,
 		self.commodity_name,
