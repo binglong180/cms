@@ -1,11 +1,14 @@
 package com.linxs.lowrie.infrastruture.persist.commodity.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
+import com.google.common.collect.Maps;
+import com.kissme.core.orm.Page;
 import com.kissme.core.orm.mybatis.MybatisRepositorySupport;
-import com.linxs.lowrie.domain.Page;
 import com.linxs.lowrie.domain.commodity.Commodity;
 import com.linxs.lowrie.infrastruture.persist.commodity.CommodityRepository;
 
@@ -32,9 +35,14 @@ public class CommodityRepositoryImpl extends MybatisRepositorySupport<Integer, C
 	public Page<Commodity> queryPage(Page<Commodity> page) {
 		List<Commodity> Commoditys = getSqlSession().selectList(getNamespace() + ".query", page);
 		page.setResult(Commoditys);
+		page.setTotalCount(getQueryCount());
 		return page;
 	}
 	
+	private int getQueryCount() {
+		return getSqlSession().selectList(getNamespace() + ".query").size();
+	}
+
 	@Override
 	protected String getNamespace() {
 		return "com.me.commodity";
@@ -66,7 +74,10 @@ public class CommodityRepositoryImpl extends MybatisRepositorySupport<Integer, C
 	@SuppressWarnings("unchecked")
 	@Override
 	public Page<Commodity> queryPageById(int id, Page<Commodity> page) {
-		List<Commodity> Commoditys = getSqlSession().selectList(getNamespace() + ".queryPageById", id);
+		Map<String, Object> params = Maps.newHashMap();
+		params.put("id", id);
+		page.setParams(params); 
+		List<Commodity> Commoditys = getSqlSession().selectList(getNamespace() + ".queryPageById", page);
 		page.setResult(Commoditys);
 		return page;
 	}
@@ -74,8 +85,20 @@ public class CommodityRepositoryImpl extends MybatisRepositorySupport<Integer, C
 	@SuppressWarnings("unchecked")
 	@Override
 	public Page<Commodity> queryPageByChannelId(String id, Page<Commodity> page) {
-		List<Commodity> commoditys = getSqlSession().selectList(getNamespace() + ".queryPageByChannelId", id);
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("id", id);
+		page.setParams(params);
+		List<Commodity> commoditys = getSqlSession().selectList(getNamespace() + ".queryPageByChannelId", page);
 		page.setResult(commoditys);
+		page.setTotalCount(getCountByChannelId(id)); 
 		return page;
+	}
+	
+	public int getCountById(String id) {
+		return getSqlSession().selectList(getNamespace() + ".queryCountPageById", id).size();
+	}
+	
+	public int getCountByChannelId(String id) {
+		return getSqlSession().selectList(getNamespace() + ".queryCountPageByChannelId", id).size();
 	}
 }

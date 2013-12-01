@@ -1,6 +1,6 @@
 package com.linxs.lowrie.application.commodity;
 
-import com.linxs.lowrie.domain.Page;
+import com.kissme.core.orm.Page;
 import com.linxs.lowrie.domain.commodity.Commodity;
 
 /**

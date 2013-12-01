@@ -15,9 +15,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.common.collect.Lists;
+import com.google.common.primitives.Ints;
+import com.kissme.core.orm.Page;
 import com.linxs.lowrie.application.channel.ChannelService;
 import com.linxs.lowrie.application.commodity.CommodityService;
-import com.linxs.lowrie.domain.Page;
 import com.linxs.lowrie.domain.channel.Channel;
 import com.linxs.lowrie.domain.commodity.Commodity;
 import com.linxs.lowrie.domain.commodity.CommodityAttribute;
@@ -37,12 +38,13 @@ public class CommodityController {
 	
 	@Autowired
 	private CommodityService commodityService;
+	private static final int PAGE_SIZE = 10;
 	
 	@RequestMapping(value = "/commodity.do", method = RequestMethod.GET)
 	public String list(Model model, HttpServletRequest request) {
 		Page<Commodity> page = new Page<Commodity>();
-		int pageNo = WebUtils.getCleanParam(request, "pageNo") == null ? 0 : Integer.valueOf(WebUtils.getCleanParam(request, "pageNo"));
-		page = commodityService.queryPage(page.setPageNo(pageNo).setPageSize(10));
+		int pageNo = WebUtils.getCleanParam(request, "pageNo") == null ? 0 : Ints.tryParse(WebUtils.getCleanParam(request, "pageNo"));
+		page = commodityService.queryPage(page.setPageNo(pageNo).setPageSize(PAGE_SIZE));
 		model.addAttribute("channels", channelService.queryTop());
 		model.addAttribute("page", page); 
 		return "admin/commodity/list";

@@ -6,10 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.kissme.core.orm.Page;
 import com.linxs.lowrie.application.channel.ChannelService;
 import com.linxs.lowrie.application.commodity.CommodityService;
 import com.linxs.lowrie.application.resources.ResourcesService;
-import com.linxs.lowrie.domain.Page;
 import com.linxs.lowrie.domain.commodity.Commodity;
 
 /**

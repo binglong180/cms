@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.kissme.core.orm.Page;
 import com.linxs.lowrie.application.commodity.CommodityService;
-import com.linxs.lowrie.domain.Page;
 import com.linxs.lowrie.domain.commodity.Commodity;
 import com.linxs.lowrie.domain.commodity.CommodityAttribute;
 import com.linxs.lowrie.domain.commodity.CommodityImage;

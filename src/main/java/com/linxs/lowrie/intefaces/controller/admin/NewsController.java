@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.common.primitives.Ints;
 import com.kissme.core.orm.Page;
 import com.linxs.lowrie.application.news.NewsService;
 import com.linxs.lowrie.domain.news.News;
@@ -28,12 +29,13 @@ public class NewsController {
 	
 	@Autowired
 	private NewsService newsService;
+	private static final int PAGE_SIZE = 10;
 	
 	@RequestMapping(value = "/news.do", method = RequestMethod.GET)
 	public String list(Model model, HttpServletRequest request) {
 		Page<News> page = new Page<News>();
-		int pageNo = WebUtils.getCleanParam(request, "pageNo") == null ? 0 : Integer.valueOf(WebUtils.getCleanParam(request, "pageNo"));
-		page = newsService.queryPage(page.setPageNo(pageNo).setPageSize(10));
+		int pageNo = WebUtils.getCleanParam(request, "pageNo") == null ? 0 : Ints.tryParse(WebUtils.getCleanParam(request, "pageNo"));
+		page = newsService.queryPage(page.setPageNo(pageNo).setPageSize(PAGE_SIZE));
 		model.addAttribute("page", page); 
 		return "/admin/news/list";
 	}

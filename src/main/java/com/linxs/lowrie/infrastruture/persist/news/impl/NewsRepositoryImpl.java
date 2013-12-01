@@ -37,7 +37,12 @@ public class NewsRepositoryImpl extends MybatisRepositorySupport<Integer, News> 
 	public Page<News> queryPage(Page<News> page) {
 		List<News> news = getSqlSession().selectList(getNamespace() + ".query", page);
 		page.setResult(news);
+		page.setTotalCount(getQueryCount());
 		return page;
+	}
+
+	private int getQueryCount() {
+		return getSqlSession().selectList(getNamespace() + ".query").size();
 	}
 
 	@Override

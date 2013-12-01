@@ -10,10 +10,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.google.common.base.Strings;
+import com.google.common.primitives.Ints;
+import com.kissme.core.orm.Page;
 import com.linxs.lowrie.application.channel.ChannelService;
 import com.linxs.lowrie.application.commodity.CommodityService;
 import com.linxs.lowrie.application.resources.ResourcesService;
-import com.linxs.lowrie.domain.Page;
 import com.linxs.lowrie.domain.commodity.Commodity;
 
 /**
@@ -31,6 +32,8 @@ public class ChannelsController {
 	@Autowired
 	private ResourcesService resourcesService;
 	
+	private static final int PAGE_SIZE = 9;
+	
 
 	@RequestMapping(value = "/channel.do", method = RequestMethod.GET)
 	public String channel(Model model, @RequestParam("id")String id, HttpServletRequest request) {
@@ -38,11 +41,11 @@ public class ChannelsController {
 		
 		String pageNo = request.getParameter("pageNo");
 		if(Strings.isNullOrEmpty(pageNo)) {  
-			page.setPageNo(1).setPageSize(1);
+			page.setPageNo(1).setPageSize(PAGE_SIZE);
 		} else { 
-			page.setPageNo(Integer.valueOf(pageNo)).setPageSize(1);
+			page.setPageNo(Ints.tryParse(pageNo)).setPageSize(PAGE_SIZE);
 		}
-		
+		 
 		page = commodityService.queryPageByChannelId(id, page);
 		
 		model.addAttribute("page", page);
@@ -60,9 +63,9 @@ public class ChannelsController {
 		Page<Commodity> page = new Page<Commodity>();
 		
 		if(Strings.isNullOrEmpty(pageNo)) {  
-			page.setPageNo(1).setPageSize(1);
-		} else { 
-			page.setPageNo(Integer.valueOf(pageNo)).setPageSize(1);
+			page.setPageNo(1).setPageSize(PAGE_SIZE);
+		} else {  
+			page.setPageNo(Ints.tryParse(pageNo)).setPageSize(PAGE_SIZE);
 		}
 		
 		page = commodityService.queryPageById(id, page);
@@ -70,6 +73,8 @@ public class ChannelsController {
 		model.addAttribute("channels", channelService.query());
 		model.addAttribute("channelTop", channelService.queryTop());
 		model.addAttribute("logo", resourcesService.getLogo());
+		model.addAttribute("target", id);
+		model.addAttribute("flag", "child");
 		return "channel"; 
 		
 	}
